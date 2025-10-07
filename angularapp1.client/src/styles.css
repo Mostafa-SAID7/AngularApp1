@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+// Variables
+:root {
+  // Light theme
+  --primary-color: #3f51b5;
+  --secondary-color: #f50057;
+  --background-color: #ffffff;
+  --surface-color: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+}
+
+.dark-theme {
+  --primary-color: #7986cb;
+  --secondary-color: #ff4081;
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-primary: #e9ecef;
+  --text-secondary: #adb5bd;
+  --border-color: #495057;
+}
+
+// Global styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Utility classes
+.text-center { text-align: center; }
+.mt-1 { margin-top: 1rem; }
+.mb-2 { margin-bottom: 2rem; }

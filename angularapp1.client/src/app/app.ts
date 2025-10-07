@@ -1,31 +1,20 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, signal } from '@angular/core';
+
+
+import { Component, OnInit } from '@angular/core';
+import { ProjectService } from '../../services/project.service';
+import { Project } from '../../models/project';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.html',
-  standalone: false,
-  styleUrl: './app.css'
+  selector: 'app-projects',
+  templateUrl: './projects.component.html',
+  styleUrls: ['./projects.component.scss']
 })
-export class App implements OnInit {
-  public forecasts: WeatherForecast[] = [];
+export class ProjectsComponent implements OnInit {
+  projects: Project[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private projectService: ProjectService) { }
 
-  ngOnInit() {
-    this.getForecasts();
+  ngOnInit(): void {
+    this.projectService.getAllProjects().subscribe(data => this.projects = data);
   }
-
-  getForecasts() {
-    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe(
-      (result) => {
-        this.forecasts = result;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  protected readonly title = signal('angularapp1.client');
 }
